@@ -48,10 +48,16 @@ namespace Kolokwium2_dzis
             planPodrozy.Add(pociag);
             koszt += pociag.getCenaBiletu();
         }
-        public void UsunOstatni() => planPodrozy.RemoveAt(planPodrozy.Count - 1);
+        public void UsunOstatni()
+        {
+            Transport usuwany = planPodrozy.Last();
+            koszt -= usuwany.getCenaBiletu();
+            planPodrozy.RemoveAt(planPodrozy.Count - 1);
+        }
 
         public void Wyczysc()
         {
+            koszt = 0;
             planPodrozy.Clear();
         }
 
@@ -67,9 +73,9 @@ namespace Kolokwium2_dzis
             else
                 return false;
         }
-        public DateTime ZwrocDate()
+        public string ZwrocDate()
         {
-            return dataPodrozy;
+            return dataPodrozy.ToString("dd/MM/yyyy");
         }
 
         public override string ToString()
@@ -77,7 +83,7 @@ namespace Kolokwium2_dzis
             String info = "";
             foreach (Transport x in planPodrozy)
                 info += x + "\n";
-            info += $"Koszt: {koszt}";
+            info += $"Koszt: {koszt:F2}";
             return info;
         }
     }

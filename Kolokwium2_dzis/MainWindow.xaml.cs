@@ -101,7 +101,7 @@ namespace Kolokwium2_dzis
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (Convert.ToDateTime(data_label.Text) == podroz_cala.ZwrocDate())
+            if (podroz_cala.SprawdzDate())
                 MessageBox.Show("Podana data jest dostępna.");
             else
                 MessageBox.Show("Brak dostępnej daty.");
